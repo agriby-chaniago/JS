@@ -684,4 +684,411 @@
 
 // sum(...[1, 2, 3, 4, 5]);
 
-// Function sebagai Value
+// Function sebagai Value 
+// function sayHello(name) {
+    // console.log(`Hello ${name}`);
+// }
+// 
+// let say = sayHello;
+// 
+// sayHello("Agriby");
+// say("Diandra");
+
+// Anonymous Function
+// let say = function (name) {
+//     console.log(`Hello ${name}`);
+// }
+
+// say("Agriby");
+
+// function giveMeName(callback) {
+//     callback("Agriby");
+// }
+
+// giveMeName(say);
+
+// giveMeName(function (name) {
+//     console.log(`Hello ${name}`);
+// });
+
+// Function di dalam Function
+// function outer() {
+    // function inner(){
+        // console.log("Inner Function");
+    // }
+// 
+    // inner();
+    // inner();
+    // outer(); // Error
+// }
+// 
+// outer();
+// inner(); // Error
+
+// Scope Function
+// Penjelasan Global Scope
+// Ini Global Scope
+// let counter = 0;
+
+// Ini Global Scope
+// function hitMe() {
+    // Ini Local Scope
+    // counter++;
+// }
+
+// Ini Global Scope
+// function other() {
+    // Ini Local Scope
+// }
+
+// hitMe(); // 1
+// hitMe(); // 2
+
+// console.log(counter); // Output 2 karena saya memanggil hitMe(); 2x
+
+// Local Scope
+// function first() {
+    // Ini Local Scope
+    // let first = "first";
+    // console.log(first); // Output first
+// }
+// 
+// function second() {
+    // Ini Local Scope
+    // let second = "second";
+    // console.log(second); // Output second
+// }
+
+// first();
+// second();
+
+// Coba Akses di Global Scope
+// console.log(first); // Error
+// console.log(second); // Error
+
+// Recursive Function
+// Contoh Function menggunakan For Loop
+// function factorial(value) {
+//     let result = 1;
+//     for (let i = 1; i <= value; i++) {
+//         result *= i;       
+//     }
+//     return result;
+// }
+
+// console.log(factorial(7));
+// console.log( 1 * 2 * 3 * 4 * 5 * 6 * 7 );
+
+// Contoh menggunakan Recursive Function
+// function factorialRecursive(value) {
+//     if (value === 1) {
+//         return 1;
+//     } else {
+//         return value * factorialRecursive(value -1);
+//     }
+// }
+
+// console.log(factorialRecursive(7));
+// 7 * factorialRecursive(6);
+// 7 * 6 * factorialRecursive(5);
+// 7 * 6 * 5 factorialRecursive(4);
+// 7 * 6 * 5 * 4 factorialRecursive(3);
+// 7 * 6 * 5 * 4 * 3 factorialRecursive(2);
+// 7 * 6 * 5 * 4 * 3 * 2 factorialRecursive(1);
+// 7 * 6 * 5 * 4 * 3 * 2 * 1
+// console.log( 1 * 2 * 3 * 4 * 5 * 6 * 7 );
+// Hasilnya sama namun lebih sederhana dan intuitif, karena kita hanya memanggil function itu sendiri. mudah diimplementasikan, dan mengurangi jumlah variabel tambahan
+
+// Function Generator
+// Function yang digunakan untuk membuat data generator.
+// Generator => data yang bisa diiterasi seperti array
+// untuk membuat function generator, kita perlu menggunakan tanda * setelah kata kunci function
+// dan untuk mengembalikan data di tiap iterasi, kita bisa gunakan kata kunci yield diikuti datanya.
+// Function Generator sederhana
+// function* createNames() {
+    // yield "Agriby";
+    // yield "Diandra";
+    // yield "Chaniago";
+// }
+// 
+// const names = createNames();
+// for (const name of names) {
+    // console.log(name);
+// };
+
+// Function Generator Kompleks
+// function* buatGanjil(value) {
+    // for (let i = 1; i <= value; i++) {
+        // if (i % 2 === 1) {
+            // yield i;
+        // }
+    // }
+// }
+// 
+// const angkaGanjil = buatGanjil(100);
+// for (const angka of angkaGanjil) {
+    // console.log(angka);
+// };
+// Generator sifatnya lazy
+// Generator hanya akan menghasilkan data ketika kita meminta data tersebut
+
+// Arrow Function
+// merupakan cara baru untuk membuat function di JavaScript
+// Arrow Function tidak memiliki konsep this, sehingga tidak bisa digunakan sebagai constructor function
+// Arrow Function tidak bisa digunakan sebagai generator function
+// const sayHello = (name) => {
+    // console.log(`Hello ${name}`);
+// }
+
+// const sayHello = (name) => console.log(`Hello ${name}`);
+
+// sayHello("Agriby"); 
+
+// Arrow Function Return Value
+// const sum = (a, b) = a + b;
+// console.log(sum(1, 2)); // Output 3
+
+// Arrow Function tanpa Kurung Parameter
+// const sayHello = name => console.log(`Hello ${name}`);
+
+// sayHello("Agriby"); 
+
+// Arrow Function sebagai Parameter
+// function sayHello(callback) {
+//     callback("Agriby");
+// }
+
+// sayHello(name => console.log(`Hello ${name}`));
+
+// Closure
+// Closure adalah kemampuan sebuah function untuk mengakses variabel di parent scope-nya meskipun parent scope-nya sudah selesai dieksekusi
+// function init() {
+//     let name = "Agriby";
+//     function greet() {
+//         console.log(`Hello ${name}`);
+//     }
+//     greet();
+// }
+
+// init();
+
+// Object Method
+// Cara Pertama
+// const person = {
+//     name: "Agriby",
+//     sayHello: function(name) {
+//         console.log(`Hello ${name}`);
+//     }
+// }
+
+// person.sayHello("Diandra");
+
+// Cara Kedua
+// const person = {
+//     name: "Agriby"
+// };
+
+// person.sayHello = function(name) {
+//     console.log(`Hello ${name}`);
+// }
+
+// person.sayHello("Diandra");
+
+
+// Kata Kunci This
+// this mengacu pada object yang memanggil function tersebut
+// const person = {
+//     name: "Agriby",
+//     sayHello: function(name) {
+//         console.log(`Hello ${name}`);
+//         console.log(`Hello ${this.name}`);
+        
+//         console.log(this);
+//         console.log(this.name);
+//         console.log(this.sayHello);
+//     }
+// }
+
+// person.sayHello("Diandra");
+
+// Arrow Function di Object
+// const person = {
+//     name: "Agriby",
+//     sayHello: function(name) {
+//         console.log(`Hello ${name}`);
+//         console.log(`Hello ${this.name}`);
+//     },
+//     sayHelloArrow: (name) => {
+//         console.log(`Hello ${name}`);
+//         console.log(`Hello ${this.name}`);
+//     }
+// }
+
+// person.sayHello("Diandra");
+// person.sayHelloArrow("Diandra");
+
+
+// Getter dan Setter
+// Getter digunakan untuk mengambil nilai dari sebuah properti
+// Setter digunakan untuk mengubah nilai dari sebuah properti
+// Dengan menggunakan getter dan setter, kita bisa melakukan hal apapun dalam function sebelum sebuah property di akses atau diubah misal menambah validasi dan lain-lain
+// const person = {
+//     firstName: "Agriby",
+//     lastName: "Chaniago",
+//     get fullName() {
+//         return `${this.firstName} ${this.lastName}`;
+//     }
+// }
+
+// Otomatis memanggil get fullname()
+// console.log(person.fullName);
+
+// const person = {
+//     firstName: "Agriby",
+//     lastName: "Chaniago",
+//     get fullName() {
+//         return `${this.firstName} ${this.lastName}`;
+//     },
+//     set fullName(value) {
+//         const nameParts = value.split(" ");
+//         this.firstName = nameParts[0];
+//         this.lastName = nameParts[1];
+//     }
+// }
+
+// person.fullName = "Diandra Chaniago";
+// console.log(person.fullName);
+
+
+// NEVER USE VAR
+
+
+// Destructuring
+// fitur yang memungkinkan kita ketika ingin mengambil data dari array atau object tanpa harus melakukan pengambilan data satu persatu
+// Array Destructuring
+// const names = ["Agriby", "Diandra", "Chaniago"];
+// const [firstName, middleName, lastName] = names;
+// console.log(firstName);
+// console.log(middleName);
+// console.log(lastName);
+
+// Object Destructuring
+// const person = {
+//     firstName: "Agriby",
+//     middleName: "Diandra",
+//     lastName: "Chaniago"
+// };
+
+// const {firstName, middleName, lastName} = person;
+// console.log(firstName);
+// console.log(middleName);
+// console.log(lastName);
+
+// const person = {
+//     firstName: "Agriby",
+//     middleName: "Diandra",
+//     lastName: "Chaniago"
+// };
+
+// const {firstName: fName, middleName: mName, lastName: lName} = person;
+// console.log(fName);
+// console.log(mName);
+// console.log(lName);
+
+// const person = {
+//     firstName: "Agriby",
+//     middleName: "Diandra",
+//     lastName: "Chaniago"
+// };
+
+// const {firstName, ...rest} = person;
+// console.log(firstName);
+// console.log(rest);
+
+// const person = {
+//     firstName: "Agriby",
+//     middleName: "Diandra",
+//     lastName: "Chaniago"
+// };
+
+// const {firstName, middleName, lastName, age = 20} = person;
+// console.log(firstName);
+// console.log(middleName);
+// console.log(lastName);
+// console.log(age);
+
+// const person = {
+//     firstName: "Agriby",
+//     middleName: "Diandra",
+//     lastName: "Chaniago",
+//     address: {
+//         city: "Jakarta",
+//         country: "Indonesia"
+//     }
+// };
+
+// const {firstName, middleName, lastName, address: {city, country}} = person;
+// console.log(firstName);
+// console.log(middleName);
+// console.log(lastName);
+// console.log(city);
+// console.log(country);
+
+// const person = {
+//     firstName: "Agriby",
+//     middleName: "Diandra",
+//     lastName: "Chaniago",
+//     address: {
+//         city: "Jakarta",
+//         country: "Indonesia"
+//     }
+// };
+
+// const {firstName, middleName, lastName, address: {city, country, postalCode = 12345}} = person;
+// console.log(firstName);
+// console.log(middleName);
+// console.log(lastName);
+// console.log(city);
+// console.log(country);
+// console.log(postalCode);
+
+
+// Strict Mode
+// fitur yang digunakan untuk memaksa kita menulis kode JavaScript yang lebih baik
+// "use strict";
+
+// function useStrictMode() {
+//     'use strict';
+//     const person = {
+//         firstname: "Agriby"
+//     }
+
+//     console.log(person.firstname);
+// }
+// useStrictMode(); // Muncul
+
+// function useStrictMode() {
+//     'use strict';
+//     const person = {
+//         firstname: "Agriby"
+//     }
+
+//     with (person) {
+//         console.log(firstname);
+//     }
+// }
+// useStrictMode(); // Error
+
+
+// Debugger
+// fitur yang digunakan untuk melakukan debugging pada kode JavaScript
+// debugger;
+
+// function createFullName(firstname, middlename, lastname) {
+//     debugger;
+//     const fullName = `${firstname} ${middlename} ${lastname}`;
+//     return `${firstname} ${middlename} ${lastname}`;
+// }
+
+// const name = createFullName("Agriby", "Diandra", "Chaniago");
+// console.log(name);
